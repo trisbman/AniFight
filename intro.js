@@ -1,9 +1,9 @@
 const prompt = require("prompt");
-const characters = require("./characters/charactersIndex");
+const { characters } = require("./characters");
 
 const prop = {
   name: "character",
-  validator: /^[1-3]?$/,
+  validator: /^[0-3]?$/,
   warning: "Please enter a valid number",
 };
 

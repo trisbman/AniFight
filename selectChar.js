@@ -1,4 +1,4 @@
-let characters = require("./characters/charactersIndex");
+let { characters } = require("./characters");
 
 const selectChar = (choice) =>
   new Promise((resolve, reject) => {

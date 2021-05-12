@@ -1,6 +1,4 @@
-const Lion = require("./characters/Lion");
-const Tiger = require("./characters/Tiger");
-const Wolf = require("./characters/Wolf");
+const { Tiger, Wolf, Lion } = require("./characters");
 
 const setCharacter = (char) => {
   switch (char) {

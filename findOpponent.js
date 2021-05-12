@@ -1,4 +1,4 @@
-let characters = require("./characters/charactersIndex");
+let { characters } = require("./characters");
 
 const getRandomChar = (val) => {
   if (!val) return characters[Math.floor(Math.random() * characters.length)];
