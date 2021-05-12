@@ -1,4 +1,3 @@
-const characters = require("./characters/charactersIndex");
 const Lion = require("./characters/Lion");
 const Tiger = require("./characters/Tiger");
 const Wolf = require("./characters/Wolf");

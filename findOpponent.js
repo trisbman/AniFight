@@ -1,6 +1,7 @@
 let characters = require("./characters/charactersIndex");
 
 const getRandomChar = (val) => {
+  if (!val) return characters[Math.floor(Math.random() * characters.length)];
   characters.splice(characters.indexOf(val), 1);
   return characters[Math.floor(Math.random() * characters.length)];
 };
@@ -15,4 +16,4 @@ const findOpponent = (val) =>
     }, 1000);
   });
 
-module.exports = findOpponent;
+module.exports = { findOpponent, getRandomChar };
