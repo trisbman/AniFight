@@ -1,6 +1,6 @@
-const countdown = (pair) =>
+const countdown = (value) =>
   new Promise((resolve, reject) => {
-    console.log("Get ready to fight in...");
+    console.log("Ready to battle in...");
     let j = 0;
     for (let i = 1; i < 4; i++) {
       setTimeout(() => {
@@ -10,7 +10,7 @@ const countdown = (pair) =>
       j = i;
     }
     setTimeout(() => {
-      resolve(pair);
+      resolve(value);
     }, (j + 1) * 1000);
   });
 
