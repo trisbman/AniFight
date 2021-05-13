@@ -1,6 +1,6 @@
 const { Tiger, Wolf, Lion } = require("./characters");
 
-const setCharacter = (char) => {
+const setChar = (char) => {
   switch (char) {
     case "Tiger":
       return new Tiger();
@@ -12,17 +12,19 @@ const setCharacter = (char) => {
 };
 
 const fight = (playerChar, compChar) => {
-  const comp = setCharacter(compChar),
-    player = setCharacter(playerChar);
+  const comp = setChar(compChar),
+    player = setChar(playerChar);
   console.log(
-    `${player.name} strength: ${player.strength}\n${comp.name} strength: ${comp.strength}\n`
+    `[YOU]  ${player.name}'s strength: ${player.strength}\n[COMP] ${comp.name}'s strength: ${comp.strength}\n`
   );
   if (player.strength === comp.strength)
-    return console.log("Tiger and Wolf have the same strength, it's a draw!");
+    return console.log(
+      `${player.name} and ${comp.name} have the same strength, it's a draw!`
+    );
 
   return player.strength > comp.strength
-    ? console.log("You win!") + player.win()
-    : console.log("You lose!") + comp.win();
+    ? console.log(`${player.name} win! Congratulations!`)
+    : console.log(`${comp.name} win! Better luck next time!`);
 };
 
 module.exports = fight;
