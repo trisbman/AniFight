@@ -1,4 +1,4 @@
-const { Tiger, Wolf, Lion } = require("./characters");
+const { Tiger, Wolf, Lion, Eagle, Elephant } = require("./characters");
 
 const setChar = (char) => {
   switch (char) {
@@ -8,6 +8,10 @@ const setChar = (char) => {
       return new Wolf();
     case "Lion":
       return new Lion();
+    case "Eagle":
+      return new Eagle();
+    case "Elephant":
+      return new Elephant();
   }
 };
 

@@ -29,6 +29,18 @@ class Wolf {
     console.log("owooooo!");
   }
 }
-const characters = ["Tiger", "Wolf", "Lion"];
+class Eagle {
+  constructor() {
+    this.name = "Eagle";
+    this.strength = Math.pow(Math.floor(Math.random() * 10), 2);
+  }
+}
+class Elephant {
+  constructor() {
+    this.name = "Elephant";
+    this.strength = Math.ceil(Math.random() * 50) * 2;
+  }
+}
+const characters = ["Tiger", "Wolf", "Lion", "Eagle", "Elephant"];
 
-module.exports = { Lion, Wolf, Tiger, characters };
+module.exports = { Lion, Wolf, Tiger, Eagle, Elephant, characters };
