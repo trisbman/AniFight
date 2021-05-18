@@ -1,4 +1,6 @@
 let { characters } = require("./characters");
+const prompt = require("prompt");
+const { prop } = require("./intro.js")
 
 const getRandomCharacter = (playerChar) => {
   if (!playerChar)
@@ -8,18 +10,18 @@ const getRandomCharacter = (playerChar) => {
   return characters[Math.floor(Math.random() * characters.length)];
 };
 
-//find available opponents and prompt user to choose,
-//@param player's character string or number 0 if random character
-const getOpponent = (playerChar) =>
-  new Promise((resolve, reject) => {
-    console.log("Finding opponents...");
-    setTimeout(() => {
-      const compChar = getRandomCharacter(playerChar);
-      console.log("Available opponents: " + compChar);
-      resolve([playerChar, compChar]);
-    }, 1000);
-  });
+//find available opponents and prompt user to choose
+//@param playerChar: character string or number 0 if random character
+const getOpponent = (char) =>{
+      characters.splice(characters.indexOf(char), 1);
+      console.log("Pick your opponent:")
+      let i = 1
+      characters.map(e => console.log(`${i++}. ${e}`))
+      console.log("0. Random");
+      prompt.start();
+      return prompt.get(prop)
+  };
 
 // findOpponent("Tiger").then((val) => console.log("//" + val));
 
-module.exports = { getOpponent, getRandomCharacter };
+module.exports = { getOpponent, getRandomCharacter  };

@@ -4,13 +4,13 @@ const { getRandomCharacter } = require("./getOpponent");
 const selectCharacter = (choice) =>
   new Promise((resolve, reject) => {
     choice = parseInt(choice.character);
-    let playerChar = "";
+    let char = "";
     if (!choice) {
-      playerChar = getRandomCharacter();
-    } else playerChar = characters[choice - 1];
+      char = getRandomCharacter();
+    } else char = characters[choice - 1];
 
-    console.log("\nYou choose " + playerChar + "\n");
-    resolve(playerChar);
+    console.log("\nYou choose " + char + "\n");
+    resolve(char);
   });
 
 module.exports = selectCharacter;
