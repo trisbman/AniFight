@@ -1,8 +1,9 @@
 const fight = require("./fight");
 const { intro } = require("./intro");
-const { countdown, confirmOpponent } = require("./countdown");
+const countdown = require("./countdown");
 const { getOpponent } = require("./getOpponent");
 const selectCharacter = require("./selectCharacter");
+const confirmOpponent = require("./confirmOpponent");
 var playerChar = ''
 
 intro()

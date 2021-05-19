@@ -18,18 +18,4 @@ const countdown = (value) =>
     }, (j + 1) * 1000);
   });
 
-const confirmOpponent = (compChoice, playerChoice) =>
-new Promise((resolve, reject) => {
-  compChoice = parseInt(compChoice.character);
-  let char = "";
-  if (!compChoice) {
-    char = getRandomCharacter(playerChoice);
-  } else char = characters[compChoice - 1];
-
-  console.log("\nYou choose " + char + "\n");
-  resolve(char);
-});
-
-
-
-module.exports = { countdown, confirmOpponent };
+module.exports = countdown;

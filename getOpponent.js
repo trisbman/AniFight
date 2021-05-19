@@ -13,11 +13,10 @@ const getRandomCharacter = (playerChar) => {
 //find available opponents and prompt user to choose
 //@param playerChar: character string or number 0 if random character
 const getOpponent = (char) =>{
-      characters.splice(characters.indexOf(char), 1);
       console.log("Pick your opponent:")
       let i = 1
       characters.map(e => console.log(`${i++}. ${e}`))
-      console.log("0. Random");
+      console.log("0. Random\n");
       prompt.start();
       return prompt.get(prop)
   };
