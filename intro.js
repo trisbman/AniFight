@@ -3,7 +3,7 @@ const { characters } = require("./characters");
 
 const prop = {
   name: "character",
-  validator: /^[\d]{1}$/,
+  validator: `^[0-${characters.length}]$`,
   warning: "Please enter a valid number",
 };
 
