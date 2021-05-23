@@ -1,4 +1,5 @@
 const { characters } = require("./characters");
+const { getRandomCharacter } = require("./getOpponent");
 
 const confirmOpponent = (compChoice, playerChoice) =>
 new Promise((resolve, reject) => {

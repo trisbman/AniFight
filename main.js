@@ -11,7 +11,6 @@ const main = () =>
     .then((value) => getOpponent(value))
     .then((value) => countdown(value))
     .then((value) => fight(...value))
-    .then((value) => tryAgain);
 //.catch((err) => console.log("The battle is invalid!\nError:\n" + err));
 
 module.exports = main;
