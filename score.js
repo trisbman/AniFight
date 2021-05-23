@@ -37,6 +37,6 @@ const plusCompScore = () => fs.writeFileSync('./scores.txt',
 }`
 )
 
-const getCurrentScore = () => toColorLog(`\nPlayer Score: ${playerScore}`, 1) + toColorLog(`Computer Score: ${compScore}`, 2)
+const getCurrentScore = () => toColorLog(`\nCurrent score:`) + toColorLog(`Player's score: ${playerScore}`, 1) + toColorLog(`Computer's score: ${compScore}`, 2)
 
 module.exports = { resetScore, plusPlayerScore, plusCompScore, getCurrentScore }

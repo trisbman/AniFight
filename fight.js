@@ -25,7 +25,7 @@ const fight = (playerChar, compChar) => {
     console.log(toColor(`[COMP] ${comp.name}'s strength: ${comp.strength}\n`, 2))
   
   if (player.strength === comp.strength)
-    return console.log(
+    console.log(
       toColor(`${player.name} and ${comp.name} have the same strength, it's a draw!`)
     );
 
@@ -33,11 +33,14 @@ const fight = (playerChar, compChar) => {
     plusPlayerScore()
     toColorLog(`You win!\nCongratulations!`)
   }
-  else {
+  else if(comp.strength < player.strength){
     plusCompScore()
-    toColorLog(`Computer win!\nBetter luck next time!`)
+    toColorLog(`Computer win!\nBetter luck next time!\n`)
   }
-return getCurrentScore()  
+  
+  getCurrentScore()  
+  toColorLog('(reset score by running `npm run setting`)')
+  return
 };
 
 module.exports = fight;
