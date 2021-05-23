@@ -18,6 +18,6 @@ setColor()
   .then(value => confirmOpponent(value))
   .then((value) => countdown([playerChar, value]))
   .then((value) => fight(...value))
-  .catch((err) => console.log(`The battle is invalid!\n
-  Please contact developer for more information!\n
-  Error:\n ${err}`));
+  .catch((err) => console.log(`\nThe battle is invalid!\n
+Please contact developer for more information!\n
+${err}`));

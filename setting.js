@@ -26,11 +26,11 @@ prompt.start()
 
 setColor()
     .then(() => toColorLog(`Setting options:\n
-1. Change text's color\n
-2. Reset text's color\n
-3. View current text's color setting\n
-4. Change list-view\n
-5. Reset list-view\n
-`))
+1. Change text color\n
+2. Reset text color\n`
+// 3. Change list-view\n
+// 4. Reset list-view\n
+// 5. View current settings\n
+))
     .then(() => prompt.get(choice))
     .then(v => choiceHandler(v.choice))
