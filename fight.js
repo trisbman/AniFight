@@ -33,11 +33,11 @@ const fight = (playerChar, compChar) => {
     plusPlayerScore()
     toColorLog(`You win!\nCongratulations!`)
   }
-  else if(comp.strength < player.strength){
+  else if(comp.strength > player.strength){
     plusCompScore()
     toColorLog(`Computer win!\nBetter luck next time!\n`)
   }
-  
+
   getCurrentScore()  
   toColorLog('(reset score by running `npm run setting`)')
   return
