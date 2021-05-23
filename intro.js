@@ -2,6 +2,7 @@ const chalk = require("chalk");
 const prompt = require("prompt");
 const { characters } = require("./characters");
 const charactersList = require("./charactersList");
+const toColor = require("./toColor");
 
 const prop = {
   name: "character",
@@ -10,7 +11,7 @@ const prop = {
 };
 
 const intro = () => {
-  console.log(chalk.redBright("Welcome to AniFight!\n") + chalk.blue("Pick your character:"));
+  console.log(toColor("Welcome to AniFight!\n\nPick " + toColor("your character", 1)));
   charactersList();
   prompt.start();
   return prompt.get(prop);

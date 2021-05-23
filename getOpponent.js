@@ -3,6 +3,7 @@ const prompt = require("prompt");
 const { prop } = require("./intro.js");
 const charactersList = require("./charactersList");
 const chalk = require("chalk");
+const toColor = require("./toColor");
 
 const getRandomCharacter = (playerChar) => {
   if (!playerChar)
@@ -13,7 +14,7 @@ const getRandomCharacter = (playerChar) => {
 };
 
 const getOpponent = () =>{
-      console.log(chalk.magenta("Pick your opponent:"))
+      console.log(toColor("Pick " + toColor("your opponent", 2)))
       charactersList()
       prompt.start();
       return prompt.get(prop)

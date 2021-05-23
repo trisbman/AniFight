@@ -1,4 +1,5 @@
 const { characters } = require("./characters");
+const toColor = require("./toColor");
 
 const tab = (str) => {
     if(str.length < 5) return '\t\t'
@@ -15,7 +16,7 @@ const charactersList = (opt) => {
       return;
     }  
     for (let i = 0; i < characters.length; i++) {
-    console.log(parseInt(i) + 1 + ". " + characters[i] + tab(characters[i]) + (characters[++i] ? (parseInt(i) + 1) + ". " +  characters[i] : "0. Random"));
+    console.log(toColor(parseInt(i) + 1 + ". " + characters[i] + tab(characters[i]) + (characters[++i] ? (parseInt(i) + 1) + ". " +  characters[i] : "0. Random")));
   }
   return;
 }

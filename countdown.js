@@ -1,16 +1,14 @@
 const chalk = require("chalk");
-const { characters } = require("./characters");
-const { getRandomCharacter } = require("./getOpponent");
-
+const toColor = require("./toColor");
 
 const countdown = (value) =>
   new Promise((resolve, reject) => {
-    console.log(chalk.red(`Battle between ${chalk.blue(value[0])} and ${chalk.magenta(value[1])}`));
+    console.log(toColor(`Battle between ${toColor(value[0], 1)} and ${toColor(value[1], 2)}`));
     let j = 0;
     for (let i = 1; i < 4; i++) {
       setTimeout(() => {
-        console.log("\t ..." + parseInt(4 - i) + "...");
-        if (i === 3) console.log("\t  BEGIN\n");
+        console.log(toColor("\t ..." + parseInt(4 - i) + "..."));
+        if (i === 3) console.log(toColor("\t  BEGIN\n"));
       }, i * 1000);
       j = i;
     }
