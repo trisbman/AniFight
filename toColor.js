@@ -9,7 +9,7 @@ let compColor = 'redBright'
 const setColor = () => new Promise((resolve,reject) => {
     fs.readFile('./options.txt', 'utf8' , (err, data) => {
         if (err) {
-            console.error(err)
+            resolve()
             return
         }
         data = JSON.parse(data)
