@@ -38,7 +38,7 @@ class Eagle {
 class Elephant {
   constructor() {
     this.name = "Elephant";
-    this.strength = Math.ceil(Math.random() * 50) * 2;
+    this.strength = Math.ceil(Math.random() * 50) + Math.ceil(Math.random() * 2) * 25;
   }
 }
 const characters = ["Tiger", "Wolf", "Lion", "Eagle", "Elephant"];
