@@ -1,6 +1,5 @@
 const prompt = require('prompt');
 const changeColor = require('./changeColor');
-const invalidOption = require('./error');
 const { resetScore } = require('./score');
 const { setColor, toColorLog } = require('./toColor')
 const choice = {
@@ -17,7 +16,7 @@ const choiceHandler = (n) => {
             return changeColor(true);
         case 3:
             resetScore()            
-            console.log('Scores reset successful');
+            toColorLog('Scores reset successful');
             return
         case 4:
         default:

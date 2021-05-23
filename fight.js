@@ -1,5 +1,5 @@
 const { Tiger, Wolf, Lion, Eagle, Elephant } = require("./characters");
-const { plusScore, minusScore, getCurrentScore } = require("./score");
+const { getCurrentScore, plusCompScore, plusPlayerScore } = require("./score");
 const { toColor, toColorLog } = require("./toColor");
 
 
@@ -30,11 +30,11 @@ const fight = (playerChar, compChar) => {
     );
 
   if(player.strength > comp.strength) {
-    plusScore()
+    plusPlayerScore()
     toColorLog(`You win!\nCongratulations!`)
   }
   else {
-    minusScore()
+    plusCompScore()
     toColorLog(`Computer win!\nBetter luck next time!`)
   }
 return getCurrentScore()  

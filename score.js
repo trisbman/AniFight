@@ -5,13 +5,15 @@ let compScore
 
 fs.readFile('./scores.txt', 'utf8' , (err, data) => {
     if (err) {
-      console.error(err)
-      return
+        playerScore = 0
+        compScore = 0
+        return
     }
   
     data = JSON.parse(data)
     playerScore = data.playerScore
     compScore = data.compScore
+    return
 })
 
 const resetScore = () => fs.writeFileSync('./scores.txt',
@@ -21,20 +23,20 @@ const resetScore = () => fs.writeFileSync('./scores.txt',
 }`
 )
 
-const plusScore = () => fs.writeFileSync('./scores.txt',
+const plusPlayerScore = () => fs.writeFileSync('./scores.txt',
 `{
         "playerScore": "${++playerScore}",
-        "compScore": "${++compScore}"        
+        "compScore": "${compScore}"        
 }`
 )
 
-const minusScore = () => fs.writeFileSync('./scores.txt',
+const plusCompScore = () => fs.writeFileSync('./scores.txt',
 `{
-        "playerScore": "${--playerScore}",
-        "compScore": "${--compScore}"        
+        "playerScore": "${playerScore}",
+        "compScore": "${++compScore}"        
 }`
 )
 
 const getCurrentScore = () => toColorLog(`\nPlayer Score: ${playerScore}`, 1) + toColorLog(`Computer Score: ${compScore}`, 2)
 
-module.exports = { resetScore, plusScore, minusScore, getCurrentScore }
+module.exports = { resetScore, plusPlayerScore, plusCompScore, getCurrentScore }
