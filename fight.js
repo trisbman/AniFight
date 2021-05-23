@@ -26,12 +26,12 @@ const fight = (playerChar, compChar) => {
   
   if (player.strength === comp.strength)
     console.log(
-      toColor(`${player.name} and ${comp.name} have the same strength, it's a draw!`)
+      toColor(`${player.name} and ${comp.name} have the same strength, it's a draw!\n`)
     );
 
   if(player.strength > comp.strength) {
     plusPlayerScore()
-    toColorLog(`You win!\nCongratulations!`)
+    toColorLog(`You win!\nCongratulations!\n`)
   }
   else if(comp.strength > player.strength){
     plusCompScore()
