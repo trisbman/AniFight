@@ -1,42 +1,59 @@
-const fs = require('fs')
-const { toColorLog } = require('./toColor')
-let playerScore
-let compScore
+const fs = require("fs");
+const { toColorLog } = require("./toColor");
 
-fs.readFile('./scores.txt', 'utf8' , (err, data) => {
-    if (err) {
-        playerScore = 0
-        compScore = 0
-        return
-    }
-  
-    data = JSON.parse(data)
-    playerScore = data.playerScore
-    compScore = data.compScore
-    return
-})
+let playerScore;
+let compScore;
 
-const resetScore = () => fs.writeFileSync('./scores.txt',
-`{
+fs.readFile("./scores.txt", "utf8", (err, data) => {
+  if (err) {
+    playerScore = 0;
+    compScore = 0;
+    return;
+  }
+
+  const value = JSON.parse(data);
+  playerScore = value.playerScore;
+  compScore = value.compScore;
+});
+
+const resetScore = () =>
+  fs.writeFileSync(
+    "./scores.txt",
+    `{
         "playerScore": "0",
         "compScore": "0"        
 }`
-)
+  );
 
-const plusPlayerScore = () => fs.writeFileSync('./scores.txt',
-`{
-        "playerScore": "${++playerScore}",
+const plusPlayerScore = () => {
+  playerScore = parseInt(playerScore, 10) + 1;
+  fs.writeFileSync(
+    "./scores.txt",
+    `{
+        "playerScore": "${playerScore}",
         "compScore": "${compScore}"        
 }`
-)
-
-const plusCompScore = () => fs.writeFileSync('./scores.txt',
-`{
+  );
+};
+const plusCompScore = () => {
+  compScore = parseInt(compScore, 10) + 1;
+  fs.writeFileSync(
+    "./scores.txt",
+    `{
         "playerScore": "${playerScore}",
-        "compScore": "${++compScore}"        
+        "compScore": "${compScore}"        
 }`
-)
+  );
+};
 
-const getCurrentScore = () => toColorLog(`\nCurrent score:`) + toColorLog(`Player's score: ${playerScore}`, 1) + toColorLog(`Computer's score: ${compScore}`, 2)
+const getCurrentScore = () =>
+  toColorLog(`\nCurrent score:`) +
+  toColorLog(`Player's score: ${playerScore}`, 1) +
+  toColorLog(`Computer's score: ${compScore}`, 2);
 
-module.exports = { resetScore, plusPlayerScore, plusCompScore, getCurrentScore }
+module.exports = {
+  resetScore,
+  plusPlayerScore,
+  plusCompScore,
+  getCurrentScore,
+};

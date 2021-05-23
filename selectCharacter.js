@@ -1,16 +1,16 @@
-let { characters } = require("./characters");
+const { characters } = require("./characters");
 const { getRandomCharacter } = require("./getOpponent");
 const { toColor } = require("./toColor");
 
 const selectCharacter = (choice) =>
-  new Promise((resolve, reject) => {
-    choice = parseInt(choice.character);
+  new Promise((resolve) => {
+    const value = parseInt(choice.character, 10);
     let char = "";
-    if (!choice) {
+    if (!value) {
       char = getRandomCharacter();
-    } else char = characters[choice - 1];
+    } else char = characters[value - 1];
 
-    console.log(toColor("\nYou choose " + toColor(char, 1) + "\n", 1));
+    console.log(toColor(`\nYou choose ${toColor(char, 1)}\n`, 1));
     resolve(char);
   });
 

@@ -1,71 +1,78 @@
-const prompt = require('prompt')
-const fs = require('fs')
-const { toColor, toColorLog } = require('./toColor')
-const colors = require('./colors')
-const invalidOption = require('./error')
-const re = /^[^\d\s]{3,}$/
-const color = [
-    {
-  name: "UI Text Color",
-  validator: re,
-  warning: "Only accepting color name"
-    },
-    {
-  name: "Player Text Color",
-  validator: re,
-  warning: "Only accepting color name"
-    },
-    {
-  name: "Computer Text Color",
-  validator: re,
-  warning: "Only accepting color name"
-    }
-]
+const prompt = require("prompt");
+const fs = require("fs");
+const { toColor, toColorLog } = require("./toColor");
+const colors = require("./colors");
+const InvalidOption = require("./error");
+
+const re = /^[^\d\s]{3,}$/;
+const prop = [
+  {
+    name: "UI Text Color",
+    validator: re,
+    warning: "Only accepting color name",
+  },
+  {
+    name: "Player Text Color",
+    validator: re,
+    warning: "Only accepting color name",
+  },
+  {
+    name: "Computer Text Color",
+    validator: re,
+    warning: "Only accepting color name",
+  },
+];
 
 const colorHandler = (color) => {
-  const arr = []
-  for(let i in color) {
-    color[i] = color[i].toLowerCase()
+  const arr = [];
+  for (const i in color) {
+    const colorIteratee = color[i].toLowerCase();
     try {
-    if(colors.indexOf(color[i]) < 0){
-    throw new invalidOption('One or some of the colors are not available')
-    }
-    arr.push(color[i])
+      if (colors.indexOf(colorIteratee) < 0) {
+        throw new InvalidOption("One or some of the colors are not available");
+      }
+      arr.push(color[i]);
     } catch (err) {
       toColorLog(err.message);
-      toColorLog('\nSupported color options:')
-      colors.map(e => toColorLog(e))
-      return
+      toColorLog("\nSupported color options:");
+      colors.map((e) => toColorLog(e));
+      return;
     }
   }
 
-  fs.writeFileSync('./options.txt', `{
+  fs.writeFileSync(
+    "./options.txt",
+    `{
   "UIColor": "${arr[0]}",
   "playerColor": "${arr[1]}",
-  "compColor": "${arr[2]}"\n}`)
+  "compColor": "${arr[2]}"\n}`
+  );
 
-console.log(toColor(`Your preferences have been saved!\n
-Changes will take effect on the next run.`));
-}
+  console.log(
+    toColor(`Your preferences have been saved!\n
+Changes will take effect on the next run.`)
+  );
+};
 
 const toDefault = () => {
-    fs.writeFileSync('./options.txt', `{
+  fs.writeFileSync(
+    "./options.txt",
+    `{
     "UIColor": "yellow",
     "playerColor": "green",
-    "compColor": "redBright"\n}`)
-    console.log(toColor(`Color setting has been reset to default!\n
-Changes will take effect on the next run.`));
-}
+    "compColor": "redBright"\n}`
+  );
+  return toColorLog(`Color setting has been reset to default!\n
+Changes will take effect on the next run.`);
+};
 
 const changeColor = (def = false) => {
-  if(def) return toDefault()
+  if (def) return toDefault();
   console.log(toColor("Input only color name"));
-  prompt.start()
-  prompt.get(color)
-    .then(v => colorHandler(v))
-}
+  prompt.start();
+  return prompt.get(prop).then((v) => colorHandler(v));
+};
 
-const viewColorSetting = () => {  
-}
+// const viewColorSetting = () => {};
 
-module.exports = changeColor
+module.exports = changeColor;

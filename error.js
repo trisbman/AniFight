@@ -1,8 +1,3 @@
-class invalidOption extends Error{
-    constructor(msg){
-        super(msg)
-    }
+class InvalidOption extends Error {}
 
-}
-
-module.exports = invalidOption
+module.exports = InvalidOption;
