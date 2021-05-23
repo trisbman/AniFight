@@ -25,14 +25,15 @@ const color = [
 const colorHandler = (color) => {
   const arr = []
   for(let i in color) {
+    color[i] = color[i].toLowerCase()
     try {
     if(colors.indexOf(color[i]) < 0){
     throw new invalidOption('One or some of the colors are not available')
     }
     arr.push(color[i])
     } catch (err) {
-      console.error(err.message);
-      toColorLog('\nAvailable color options:')
+      toColorLog(err.message);
+      toColorLog('\nSupported color options:')
       colors.map(e => toColorLog(e))
       return
     }
