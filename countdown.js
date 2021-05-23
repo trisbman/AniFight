@@ -1,4 +1,3 @@
-
 const { toColor } = require("./toColor");
 
 const countdown = (value) =>

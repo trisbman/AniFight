@@ -1,4 +1,3 @@
-
 const { Tiger, Wolf, Lion, Eagle, Elephant } = require("./characters");
 const { toColor } = require("./toColor");
 
