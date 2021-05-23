@@ -27,6 +27,6 @@ const toColor = (str, n) => {
     return chalk[UIColor].bold(str);
 }
 
-const toColorLog = str => console.log(toColor(str))
+const toColorLog = (str, n) => console.log(toColor(str, n))
 
 module.exports = { toColor, setColor, toColorLog }

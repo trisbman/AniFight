@@ -1,5 +1,6 @@
 const { Tiger, Wolf, Lion, Eagle, Elephant } = require("./characters");
-const { toColor } = require("./toColor");
+const { plusScore, minusScore, getCurrentScore } = require("./score");
+const { toColor, toColorLog } = require("./toColor");
 
 
 const setChar = (char) => {
@@ -28,9 +29,15 @@ const fight = (playerChar, compChar) => {
       toColor(`${player.name} and ${comp.name} have the same strength, it's a draw!`)
     );
 
-  return player.strength > comp.strength
-    ? console.log(toColor(`You win!\nCongratulations!`))
-    : console.log(toColor(`Computer win!\nBetter luck next time!`));
+  if(player.strength > comp.strength) {
+    plusScore()
+    toColorLog(`You win!\nCongratulations!`)
+  }
+  else {
+    minusScore()
+    toColorLog(`Computer win!\nBetter luck next time!`)
+  }
+return getCurrentScore()  
 };
 
 module.exports = fight;
