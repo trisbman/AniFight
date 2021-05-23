@@ -4,9 +4,12 @@ const countdown = require("./countdown");
 const { getOpponent } = require("./getOpponent");
 const selectCharacter = require("./selectCharacter");
 const confirmOpponent = require("./confirmOpponent");
+const { setColor } = require("./toColor");
 var playerChar = ''
 
-intro()
+
+setColor()
+  .then(() => intro())
   .then((value) => selectCharacter(value))
   .then((value) => {
     playerChar = value

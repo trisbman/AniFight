@@ -1,6 +1,6 @@
-const chalk = require("chalk");
+
 const { Tiger, Wolf, Lion, Eagle, Elephant } = require("./characters");
-const toColor = require("./toColor");
+const { toColor } = require("./toColor");
 
 
 const setChar = (char) => {

@@ -1,5 +1,5 @@
 const { characters } = require("./characters");
-const toColor = require("./toColor");
+const { toColor } = require("./toColor");
 
 const tab = (str) => {
     if(str.length < 5) return '\t\t'

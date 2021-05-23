@@ -2,8 +2,7 @@ let { characters } = require("./characters");
 const prompt = require("prompt");
 const { prop } = require("./intro.js");
 const charactersList = require("./charactersList");
-const chalk = require("chalk");
-const toColor = require("./toColor");
+const { toColor } = require("./toColor");
 
 const getRandomCharacter = (playerChar) => {
   if (!playerChar)

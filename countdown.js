@@ -1,5 +1,5 @@
-const chalk = require("chalk");
-const toColor = require("./toColor");
+
+const { toColor } = require("./toColor");
 
 const countdown = (value) =>
   new Promise((resolve, reject) => {

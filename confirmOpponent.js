@@ -1,6 +1,6 @@
 const { characters } = require("./characters");
 const { getRandomCharacter } = require("./getOpponent");
-const toColor = require("./toColor");
+const { toColor } = require("./toColor");
 
 const confirmOpponent = (compChoice, playerChoice) =>
 new Promise((resolve, reject) => {

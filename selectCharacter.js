@@ -1,6 +1,6 @@
 let { characters } = require("./characters");
 const { getRandomCharacter } = require("./getOpponent");
-const toColor = require("./toColor");
+const { toColor } = require("./toColor");
 
 const selectCharacter = (choice) =>
   new Promise((resolve, reject) => {

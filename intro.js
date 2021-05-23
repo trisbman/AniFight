@@ -1,8 +1,7 @@
-const chalk = require("chalk");
 const prompt = require("prompt");
 const { characters } = require("./characters");
 const charactersList = require("./charactersList");
-const toColor = require("./toColor");
+const {toColor} = require("./toColor");
 
 const prop = {
   name: "character",
