@@ -44,7 +44,7 @@ const fight = (playerChar, compChar) => {
   }
 
   getCurrentScore();
-  toColorLog("(reset score by running `npm run setting`)");
+  toColorLog("(reset score is available from setting: `npm run setting`)");
 };
 
 module.exports = fight;
