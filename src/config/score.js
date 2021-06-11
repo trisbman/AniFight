@@ -1,10 +1,10 @@
 const fs = require("fs");
-const { toColorLog } = require("./toColor");
+const { toColorLog } = require("../app/toColor");
 
 let playerScore;
 let compScore;
 
-fs.readFile("./scores.txt", "utf8", (err, data) => {
+fs.readFile("./src/config/scores.txt", "utf8", (err, data) => {
   if (err) {
     playerScore = 0;
     compScore = 0;
@@ -18,7 +18,7 @@ fs.readFile("./scores.txt", "utf8", (err, data) => {
 
 const resetScore = () =>
   fs.writeFileSync(
-    "./scores.txt",
+    "./src/config/scores.txt",
     `{
         "playerScore": "0",
         "compScore": "0"        
@@ -28,7 +28,7 @@ const resetScore = () =>
 const plusPlayerScore = () => {
   playerScore = parseInt(playerScore, 10) + 1;
   fs.writeFileSync(
-    "./scores.txt",
+    "./src/config/scores.txt",
     `{
         "playerScore": "${playerScore}",
         "compScore": "${compScore}"        
@@ -38,7 +38,7 @@ const plusPlayerScore = () => {
 const plusCompScore = () => {
   compScore = parseInt(compScore, 10) + 1;
   fs.writeFileSync(
-    "./scores.txt",
+    "./src/config/scores.txt",
     `{
         "playerScore": "${playerScore}",
         "compScore": "${compScore}"        

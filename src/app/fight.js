@@ -1,6 +1,10 @@
 const { Tiger, Wolf, Lion, Eagle, Elephant } = require("./characters");
 const InvalidOption = require("./error");
-const { getCurrentScore, plusCompScore, plusPlayerScore } = require("./score");
+const {
+  getCurrentScore,
+  plusCompScore,
+  plusPlayerScore,
+} = require("../config/score");
 const { toColor, toColorLog } = require("./toColor");
 
 const setChar = (char) => {

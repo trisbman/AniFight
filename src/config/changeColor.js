@@ -1,8 +1,8 @@
 const prompt = require("prompt");
 const fs = require("fs");
-const { toColor, toColorLog } = require("./toColor");
+const { toColor, toColorLog } = require("../app/toColor");
 const colors = require("./colors");
-const InvalidOption = require("./error");
+const InvalidOption = require("../app/error");
 
 const re = /^[^\d\s]{3,}$/;
 const prop = [

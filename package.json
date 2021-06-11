@@ -14,8 +14,8 @@
     "eslint-plugin-import": "^2.23.3"
   },
   "scripts": {
-    "start": "node .",
-    "setting": "node setting.js",
+    "start": "node src/app/.",
+    "setting": "node ./src/config/setting.js",
     "lint": "eslint ./"
   },
   "repository": {
