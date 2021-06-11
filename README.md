@@ -39,12 +39,12 @@ git pull
 Start the game by running:
 
 ```
-node .
+npm start
 ```
 or
 
 ```
-npm run start
+node .
 ```
 
 ## Contributing
