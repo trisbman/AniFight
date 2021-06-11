@@ -41,11 +41,13 @@ Start the game by running:
 ```
 npm start
 ```
-or
+
+Setting menu can be openned by running: 
 
 ```
-node .
+npm run setting
 ```
+
 
 ## Contributing
 
