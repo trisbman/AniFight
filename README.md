@@ -42,7 +42,7 @@ Start the game by running:
 npm start
 ```
 
-Setting menu can be openned by running: 
+Setting menu can be opened by running: 
 
 ```
 npm run setting
