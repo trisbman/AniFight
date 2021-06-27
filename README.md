@@ -2,7 +2,7 @@
 
 A simple text-based game which include fighting with a personalization feature and more.
 
-## Prerequisities
+## Prerequisites
 * Windows/Linux/MacOS
 * [NodeJS ≥12.16.3](https://nodejs.org/)
 
@@ -53,7 +53,7 @@ npm run setting
 
 You can send a pull request, report a bug, or request a feature and I might work on it.
 
-## Contact
+## Author
 
 Tristan Budiman - [@trisbman](https://t.me/trisbman) (Telegram)
 <br />
