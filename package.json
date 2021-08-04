@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/trisbman/AniFight/issues"
   },
-  "homepage": "https://github.com/trisbman/AniFight#readme"
+  "homepage": "https://github.com/trisbman/AniFight#readme",
+  "engines": {
+    "node": ">=12.16.3"
+  }
 }
