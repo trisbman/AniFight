@@ -8,7 +8,7 @@ let compColor = "redBright";
 // Read file using async method
 const setColor = () =>
   new Promise((resolve) => {
-    fs.readFile("./options.txt", "utf8", (err, data) => {
+    fs.readFile("./src/config/options.txt", "utf8", (err, data) => {
       if (err) {
         resolve();
         return;

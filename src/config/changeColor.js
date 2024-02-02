@@ -2,7 +2,7 @@ const prompt = require("prompt");
 const fs = require("fs");
 const { toColor, toColorLog } = require("../app/toColor");
 const colors = require("./colors");
-const InvalidOption = require("../app/error");
+const InvalidOption = require("../app/errors/invalidOption");
 
 const re = /^[^\d\s]{3,}$/;
 const prop = [
@@ -41,7 +41,7 @@ const colorHandler = (color) => {
   }
 
   fs.writeFileSync(
-    "./options.txt",
+    "./src/config/options.txt",
     `{
   "UIColor": "${arr[0]}",
   "playerColor": "${arr[1]}",
@@ -56,7 +56,7 @@ Changes will take effect on the next run.`)
 
 const toDefault = () => {
   fs.writeFileSync(
-    "./options.txt",
+    "./src/config/options.txt",
     `{
     "UIColor": "yellow",
     "playerColor": "green",

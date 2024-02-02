@@ -1,5 +1,5 @@
 const prompt = require("prompt");
-const { characters } = require("./characters");
+const { characters } = require("./characters/character");
 const charactersList = require("./charactersList");
 const { toColor } = require("./toColor");
 

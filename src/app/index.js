@@ -1,25 +1,24 @@
-const fight = require("./fight");
+const battle = require("./battle");
 const { intro } = require("./intro");
 const countdown = require("./countdown");
 const { getOpponent } = require("./getOpponent");
 const selectCharacter = require("./selectCharacter");
 const confirmOpponent = require("./confirmOpponent");
 const { setColor } = require("./toColor");
+const UnknownError = require("./errors/unknownError");
 
-let playerChar = "";
-
-setColor()
-  .then(() => intro())
-  .then((value) => selectCharacter(value))
-  .then((value) => {
-    playerChar = value;
-    return getOpponent(value);
-  })
-  .then((value) => confirmOpponent(value))
-  .then((value) => countdown([playerChar, value]))
-  .then((value) => fight(...value))
-  .catch((err) =>
-    console.log(`\nThe battle is invalid!\n
-Please contact developer for more information!\n
-${err}`)
-  );
+(async () => {
+  try {
+    await setColor()
+    const introVal = await intro()
+    const playerChar = await selectCharacter(introVal)
+    let opponentChar = await getOpponent(playerChar);
+    opponentChar = await confirmOpponent(opponentChar);
+    const battleVars = await countdown([playerChar, opponentChar]);
+    await battle(...battleVars);
+    
+    return 0;
+  } catch (err) {
+    return new UnknownError(err);
+  }
+})();

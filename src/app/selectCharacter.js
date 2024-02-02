@@ -1,4 +1,4 @@
-const { characters } = require("./characters");
+const { characters } = require("./characters/character");
 const { getRandomCharacter } = require("./getOpponent");
 const { toColor } = require("./toColor");
 
