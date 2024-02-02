@@ -1,9 +1,11 @@
 class Character {
   constructor(name) {
     this.name = name;
-    this.power = 50;
-    this.basicAttack = this.power;
+    this.attack = 50;
+    this.basicAttack = this.attack;
+    this.speed = 50;
     this.hp = 100;
+    this.isPlayer = false;
   }
 }
 
