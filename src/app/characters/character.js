@@ -6,6 +6,10 @@ class Character {
     this.speed = 50;
     this.hp = 100;
     this.isPlayer = false;
+    this.skill = {
+      name: "Skill",
+      damage: this.basicAttack + 10,
+    }
   }
 }
 

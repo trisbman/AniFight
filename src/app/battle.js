@@ -37,14 +37,34 @@ const battleTurn = async (firstPlayer, secondPlayer, isOdd = false) => {
   const attackerNameStr = toColor((attacker.isPlayer ? "[YOU] " : "[COMP] ") + `${attacker.name}`, attacker.isPlayer ? 1 : 2);
   const defenderNameStr = toColor((defender.isPlayer ? "[YOU] " : "[COMP] ") + `${defender.name}`, defender.isPlayer ? 1 : 2);
 
-  console.log(attackerNameStr + toColor(` used basic attack!`));
-  console.log(defenderNameStr + toColor(` received ${attacker.basicAttack} damage!\n`));
-  defender.hp -= attacker.basicAttack;
+  let action;
+  if (attacker.isPlayer) {
+    toColorLog(attackerNameStr + toColor(`'s turn!`) + toColor(`\n1. Basic Attack\n2. ${attacker.skill.name}\n3. Surrender\n`));
+    prompt.start();
+    const response = await prompt.get({ name: "continue", description: "Select action" });
+    action = response.continue;
+  } else {
+    action = Math.floor(Math.random() * 2 + 1).toString();
+  }
+  switch (action) {
+    case "1":
+      console.log(attackerNameStr + toColor(` used basic attack!`));
+      console.log(defenderNameStr + toColor(` received ${attacker.basicAttack} damage!\n`));
+      defender.hp -= attacker.basicAttack;
+      break;
+    case "2":
+      console.log(attackerNameStr + toColor(` used ${attacker.skill.name}!`));
+      console.log(defenderNameStr + toColor(` received ${attacker.skill.damage} damage!\n`));
+      defender.hp -= attacker.skill.damage;
+      break;
+    case "3":
+      attacker.hp = 0;
+      break;
+    default:
+      throw new InvalidOption("Invalid option!");
+  }
 
   console.log(attackerNameStr + toColor(` HP: ${attacker.hp} | ` + defenderNameStr + toColor(` HP: ${defender.hp}\n`)));
-
-  prompt.start();
-  await prompt.get({ name: "continue", description: "Press enter to continue" });
 
   if (defender.hp <= 0 || attacker.hp <= 0) {
     return null;
@@ -67,7 +87,7 @@ const battle = async (playerChar, compChar) => {
 
   if (player.hp <= 0) {
     plusCompScore();
-    console.log(toColor(`Computer`, 2) + toColor(` win!\nBetter luck next time!\n`));
+    console.log(toColor(`Computer`, 2) + toColor(` win!\nNice Try!\n`));
   } else if (comp.hp <= 0) {
     plusPlayerScore();
     console.log(toColor(`You`, 1) + toColor(` win!\nCongratulations!\n`));
