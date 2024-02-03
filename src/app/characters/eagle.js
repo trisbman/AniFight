@@ -4,13 +4,17 @@ class Eagle extends Character {
   constructor() {
     super();
     this.name = 'Eagle';
-    this.speed = 100;
-    this.attack = 10;
+    this.speed *= 2;
+    this.attack -= 25;
     this.basicAttack = this.attack;
+    this.maxHp -= 30;
+    this.hp = this.maxHp;
 
-    this.skill = {
-      name: 'Eagle Claw',
-      damage: 20 + this.attack
+    this.skill = function () {
+      return {
+        name: 'Eagle Claw',
+        damage: Math.round(Math.random() * this.attack),
+      }
     }
   }
 }

@@ -4,11 +4,14 @@ class Character {
     this.attack = 50;
     this.basicAttack = this.attack;
     this.speed = 50;
-    this.hp = 100;
+    this.maxHp = 250;
+    this.hp = this.maxHp;
     this.isPlayer = false;
-    this.skill = {
-      name: "Skill",
-      damage: this.basicAttack + 10,
+    this.skill = function () {
+      return {
+        name: "Skill Attack",
+        damage: this.attack,
+      };
     }
   }
 }

@@ -8,6 +8,9 @@ const UnknownError = require("./errors/unknownError");
 
 (async () => {
   try {
+    // clear terminal
+    process.stdout.write('\033c');
+    
     await setColor()
     const introVal = await intro()
     const playerChar = await selectCharacter(introVal)

@@ -30,32 +30,66 @@ const setChar = (char) => {
   }
 };
 
-const battleTurn = async (firstPlayer, secondPlayer, isOdd = false) => {
-  const attacker = isOdd ? secondPlayer : firstPlayer;
-  const defender = isOdd ? firstPlayer : secondPlayer;
-
+const showHp = (attacker, defender, isOdd) => {
   const attackerNameStr = toColor((attacker.isPlayer ? "[YOU] " : "[COMP] ") + `${attacker.name}`, attacker.isPlayer ? 1 : 2);
   const defenderNameStr = toColor((defender.isPlayer ? "[YOU] " : "[COMP] ") + `${defender.name}`, defender.isPlayer ? 1 : 2);
 
+  const firstPlayerHpStr = isOdd
+    ? attackerNameStr + toColor(` HP: ${attacker.hp}/${attacker.maxHp} `)
+    : defenderNameStr + toColor(` HP: ${defender.hp}/${defender.maxHp} `);
+  const secondPlayerHpStr = isOdd
+    ? defenderNameStr + toColor(` HP: ${defender.hp}/${defender.maxHp} `)
+    : attackerNameStr + toColor(` HP: ${attacker.hp}/${attacker.maxHp} `);
+
+  console.log(`${firstPlayerHpStr} | ${secondPlayerHpStr}\n`);
+
+  return { attackerNameStr, defenderNameStr };
+}
+
+const promptAction = async () => {
+  prompt.start();
+  const response = await prompt.get({ name: "continue", description: "Select action" });
+  const action = response.continue;
+  if (!["1", "2", "3"].includes(action)) {
+    return promptAction();
+  }
+  return action;
+}
+
+const battleTurn = async (firstPlayer, secondPlayer, isOdd = false, i = 1) => {
+  const attacker = isOdd ? secondPlayer : firstPlayer;
+  const defender = isOdd ? firstPlayer : secondPlayer;
+  const { attackerNameStr, defenderNameStr } = showHp(attacker, defender, isOdd);
+  if (!isOdd) { toColorLog(`[Round ${i}]\n`); }
+  toColorLog(attackerNameStr + toColor(`'s turn!`));
+
+  const delayTime = 1000;
+
   let action;
+  const { name: skillName, damage: skillDamage } = attacker.skill();
   if (attacker.isPlayer) {
-    toColorLog(attackerNameStr + toColor(`'s turn!`) + toColor(`\n1. Basic Attack\n2. ${attacker.skill.name}\n3. Surrender\n`));
-    prompt.start();
-    const response = await prompt.get({ name: "continue", description: "Select action" });
-    action = response.continue;
+    toColorLog(`1. Basic Attack\n2. ${skillName}\n3. Surrender\n`)    
+    action = await promptAction();
+
   } else {
+    await new Promise((resolve) => setTimeout(resolve, delayTime * 3));
     action = Math.floor(Math.random() * 2 + 1).toString();
   }
+
   switch (action) {
-    case "1":
+    case "1": ;
       console.log(attackerNameStr + toColor(` used basic attack!`));
+      await new Promise((resolve) => setTimeout(resolve, delayTime));
       console.log(defenderNameStr + toColor(` received ${attacker.basicAttack} damage!\n`));
+      await new Promise((resolve) => setTimeout(resolve, delayTime));
       defender.hp -= attacker.basicAttack;
       break;
     case "2":
-      console.log(attackerNameStr + toColor(` used ${attacker.skill.name}!`));
-      console.log(defenderNameStr + toColor(` received ${attacker.skill.damage} damage!\n`));
-      defender.hp -= attacker.skill.damage;
+      console.log(attackerNameStr + toColor(` used ${skillName}!`));
+      await new Promise((resolve) => setTimeout(resolve, delayTime));
+      console.log(defenderNameStr + toColor(` received ${skillDamage} damage!\n`));
+      await new Promise((resolve) => setTimeout(resolve, delayTime));
+      defender.hp -= skillDamage;
       break;
     case "3":
       attacker.hp = 0;
@@ -64,12 +98,12 @@ const battleTurn = async (firstPlayer, secondPlayer, isOdd = false) => {
       throw new InvalidOption("Invalid option!");
   }
 
-  console.log(attackerNameStr + toColor(` HP: ${attacker.hp} | ` + defenderNameStr + toColor(` HP: ${defender.hp}\n`)));
-
   if (defender.hp <= 0 || attacker.hp <= 0) {
+    showHp(attacker, defender, isOdd);
+    await new Promise((resolve) => setTimeout(resolve, delayTime));
     return null;
   }
-  return battleTurn(firstPlayer, secondPlayer, !isOdd);
+  return battleTurn(firstPlayer, secondPlayer, !isOdd, i + +isOdd);
 }
 
 const battle = async (playerChar, compChar) => {
